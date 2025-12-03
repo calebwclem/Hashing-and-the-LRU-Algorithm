@@ -22,18 +22,17 @@
 // This mapping should come from the provided implementation's main.cpp
 // You'll need to extract this from the HashTableDictionary project
 std::map<int, int> N_to_M_mapping = {
-    {1024, 1279},
-    {2048, 2557},
-    {4096, 5119},
-    {8192, 10243},
-    {16384, 20483},
-    {32768, 40961},
-    {65536, 81919},
-    {131072, 163841},
-    {262144, 327673},
-    {524288, 655357},
-    {1048576, 1310719}
-    // Add other mappings from the provided main.cpp
+    {1024,    1279},
+    {2048,    2551},
+    {4096,    5101},
+    {8192,    10273},
+    {16384,   20479},
+    {32768,   40849},
+    {65536,   81931},
+    {131072,  163861},
+    {262144,  327739},
+    {524288,  655243},
+    {1048576, 1310809}
 };
 
 int get_table_size_for_N(int N) {
@@ -191,20 +190,26 @@ bool load_trace_strict_header(const std::string &path,
         }
 
         // Parse opcodes
+        // IMPORTANT: Keys consist of TWO words separated by space
+        // Format: I word1 word2  or  E word1 word2
         if (opcode_str == "I") {
-            std::string key;
-            if (!(iss >> key)) {
-                std::cerr << "ERROR: Line " << line_num << ": Insert missing key\n";
+            std::string w1, w2;
+            if (!(iss >> w1 >> w2)) {
+                std::cerr << "ERROR: Line " << line_num << ": Insert missing key (needs two words)\n";
                 return false;
             }
+            // Combine into single key with space: "word1 word2"
+            std::string key = w1 + " " + w2;
             out_operations.emplace_back(OpCode::Insert, key);
 
         } else if (opcode_str == "E") {
-            std::string key;
-            if (!(iss >> key)) {
-                std::cerr << "ERROR: Line " << line_num << ": Erase missing key\n";
+            std::string w1, w2;
+            if (!(iss >> w1 >> w2)) {
+                std::cerr << "ERROR: Line " << line_num << ": Erase missing key (needs two words)\n";
                 return false;
             }
+            // Combine into single key with space: "word1 word2"
+            std::string key = w1 + " " + w2;
             out_operations.emplace_back(OpCode::Erase, key);
 
         } else {
