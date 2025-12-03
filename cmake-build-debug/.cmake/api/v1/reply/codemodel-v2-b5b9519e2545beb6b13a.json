@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.17"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "HashTablesOpenAddressing",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "HashTablesOpenAddressing::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HashTablesOpenAddressing-Debug-7bcf884c27f66f986dc0.json",
+					"name" : "HashTablesOpenAddressing",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Applications/Documents/School/Homework/CS 315/HashMapAnalysis_StudentFiles/cmake-build-debug",
+		"source" : "/Applications/Documents/School/Homework/CS 315/HashMapAnalysis_StudentFiles"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

@@ -1,0 +1,26 @@
+1) After compaction, the histogram has a lot more counts within the smaller bins.
+Nearly 300 bins post compaction are 1-2 counts while before compaction there were a mere 17 bins that were 1-2 run counts.
+
+2) Before compaction, the histogram was alot more evenly distributed with most of the bin sizes being larger
+, and is much more evenly distributed than post-compaction, the historgram is very skewed to the left (smaller bin counts).
+In fact, post compaction there are only 22 counts in the bins > 17.
+
+3) The average run length is 25% after compaction as compared to before.
+Per the chart, the average run length was 20.02. After compaction, the average run length was merely 4.96.
+The median follows similarly, with a precompaction median of 12 and a postcompaction median of 4.
+
+4) Post compaction, we have alot more runs than before. However, the average run is so much shorter that it
+is both reasonable and prudent (Even median run length is 1/3 the previous length post-compaction).
+
+5) Per the observation in 3, the median run lengths actually shows that there are a lot more outliers in the data
+before compaction. Therefore, by performing compaction, we dramatically reduce the number of outliers. We notice this
+through the precompaction median of 12 vs the mean of 20.02.
+
+6) Precompaction and postcompaction also shows a significant difference in the rate of the largest runs.
+P90: Precompaction: 10% have a run value of 44 or more. Postcompaction: 10% have a run value of 11 or more.
+P95: Precompaction: 5% have a run legnth of 66 or more. Postcompaction: 5% have a run length of 14 or more.
+
+This shows that the top end of runs is significantly reduced post compaction, increasing efficiency.
+
+7) The total runs counted precompaction was 242. After compaction the total runs was 825. This makes
+more efficient for probing because our run ends alot earlier (allowing us to probe fewer bins).
