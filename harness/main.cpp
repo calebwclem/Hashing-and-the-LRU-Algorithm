@@ -302,6 +302,31 @@ int main() {
     // ========================================================================
     // Process each trace file
     // ========================================================================
+
+    /*for (const auto& traceFile : traceFiles) {
+        // ====================================================================
+        // QUICK TEST MODE: Only process N=1024 for fast iteration
+        // Comment out these 3 lines to process all traces
+        // ====================================================================
+        if (traceFile.find("N_1024") == std::string::npos) {
+            continue;  // Skip files that aren't N=1024
+        }
+
+        const auto pos = traceFile.find_last_of("/\\");
+        auto traceFileBaseName = (pos == std::string::npos) ? traceFile : traceFile.substr(pos + 1);
+
+        std::cout << "\n========================================\n";
+        std::cout << "Processing: " << traceFileBaseName << "\n";
+        std::cout << "========================================\n";
+
+        // Load trace
+        std::vector<Operation> operations;
+        RunMetaData run_meta_data;
+        if (!load_trace_strict_header(traceFile, run_meta_data, operations)) {
+            std::cerr << "ERROR: Failed to load trace: " << traceFile << "\n";
+            continue;
+        }*/
+
     for (const auto& traceFile : traceFiles) {
         const auto pos = traceFile.find_last_of("/\\");
         auto traceFileBaseName = (pos == std::string::npos) ? traceFile : traceFile.substr(pos + 1);
